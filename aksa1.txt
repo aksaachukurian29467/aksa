@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="395dp"
+        android:layout_height="500dp"
+    android:layout_marginTop="200dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="565dp">
+    <EditText
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <EditText
+        android:id="@+id/t2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="98dp" />
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Add"
+        android:text="ADD"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Mul"
+        android:text="MUL"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Sub"
+        android:text="SUB"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="288dp" />
+
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Div"
+        android:text="DIV"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="288dp" />
+
+    <EditText
+        android:id="@+id/t3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="512dp" />
+
+    <Button
+        android:id="@+id/b5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Rev"
+        android:text="REV"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="370dp" />
+
+   </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+mainactivity
+
+
+
+
+package com.example.calculator;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    EditText t1, t2, t3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        t1 = (EditText) findViewById(R.id.t1);
+        t2 = (EditText) findViewById(R.id.t2);
+        t3 = (EditText) findViewById(R.id.t3);
+    }
+
+    public void Add(View V) {
+        int a, b;
+        a = Integer.parseInt(t1.getText().toString());
+        b = Integer.parseInt(t2.getText().toString());
+        int c = a + b;
+        t3.setText(String.valueOf(c));
+    }
+
+    public void Mul(View V) {
+        int a, b;
+        a = Integer.parseInt(t1.getText().toString());
+        b = Integer.parseInt(t2.getText().toString());
+        int c = a * b;
+        t3.setText(String.valueOf(c));
+    }
+    public void Sub(View V) {
+        int a, b;
+        a = Integer.parseInt(t1.getText().toString());
+        b = Integer.parseInt(t2.getText().toString());
+        int c = a - b;
+        t3.setText(String.valueOf(c));
+    }
+    public void Div(View V) {
+        int a, b;
+        a = Integer.parseInt(t1.getText().toString());
+        b = Integer.parseInt(t2.getText().toString());
+        int c = a / b;
+        t3.setText(String.valueOf(c));
+    }
+    public void Rev(View V){
+        int n,reverse=0;
+        n=Integer.parseInt(t1.getText().toString());
+
+        while(n!=0){
+            reverse=(reverse*10)+(n%10);
+
+                    n=n/10;
+            t3.setText(String.valueOf(reverse));
+
+        }
+
+    }
+
+
+
+}
